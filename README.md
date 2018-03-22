@@ -1,7 +1,7 @@
 # Table of contents
 
-<!-- 
-  This TOC is auto-generated using markdown-toc: https://github.com/jonschlinkert/markdown-toc 
+<!--
+  This TOC is auto-generated using markdown-toc: https://github.com/jonschlinkert/markdown-toc
   If you introduce new or change existing chapters, please regenerate the TOC before committing.
 
   Command to regenerate (save any changes to README.md first):
@@ -34,6 +34,7 @@
   * [8.2 Recognize existing images in Elvis with the Auto Tag Images plug-in](#82-recognize-existing-images-in-elvis-with-the-auto-tag-images-plug-in)
 - [9. Privacy and data usage](#9-privacy-and-data-usage)
 - [10. Version history](#10-version-history)
+  * [v2.2.0](#v220)
   * [v2.1.0](#v210)
   * [v2.0.0](#v200)
   * [v1.1.0](#v110)
@@ -49,7 +50,7 @@ This readme describes how to setup the integration. Please read this [blog artic
 
 # 2. Package details
 
-The integration consist of several components. The main component is the image recognition server app. This nodejs based server app handles all communication between Elvis and the AI service(s). It retrieves image previews from Elvis and sends them to the AI services for recognition. It also includes a Google Translate module to translate tags to other languages and there's a REST API that allows developers to interact with the image recognition server. 
+The integration consist of several components. The main component is the image recognition server app. This nodejs based server app handles all communication between Elvis and the AI service(s). It retrieves image previews from Elvis and sends them to the AI services for recognition. It also includes a Google Translate module to translate tags to other languages and there's a REST API that allows developers to interact with the image recognition server.
 
 The second component is an Elvis web client plug-in. The Auto Tag Images plugin allows users to tag existing images in Elvis. It can either tag a selection of images or all files in the selected folder.
 
@@ -74,7 +75,7 @@ The integrated AI services are not identical in the functionality they provide, 
 
 # 3. Installation prerequisites
 
-- Fully installed and licensed [Elvis Server](https://www.woodwing.com/en/digital-asset-management-system). 
+- Fully installed and licensed [Elvis Server](https://www.woodwing.com/en/digital-asset-management-system).
 - Minimum required version is Elvis 5.26. To use all features Elvis 6.7 or higher is required.
 - Machine where the image recognition server can run. This can be on the same machine where the Elvis Server runs or a different machine. Currently supported operating systems are Linux and OSX.
 - Elvis API user license.
@@ -82,7 +83,7 @@ The integrated AI services are not identical in the functionality they provide, 
 
 # 4. Installation steps
 
-This readme describes the high level installation steps. Detailed configuration information is embedded in the various configuration files. 
+This readme describes the high level installation steps. Detailed configuration information is embedded in the various configuration files.
 
 ## 4.1 Configure Elvis metadata fields
 
@@ -97,7 +98,7 @@ An Elvis webhook needs to be configured if you want to detect images directly wh
 - Name: For example, "Image Recognition".
 - URL: Point it to the URL where the image recognition server is running, if it's running on the same machine as Elvis, this will be: http://localhost:9090/.
 - Event type: `asset_update_metadata`.
-- Metadata to include: 
+- Metadata to include:
   ```
   assetDomain
   assetPath
@@ -126,7 +127,7 @@ The server can either be installed on the Elvis Server or on a separate machine.
 
 ## 4.4 Optional: install the Auto Tag Images plug-in
 
-This section describes how to install the Auto Tag Images plug-in. Please follow the steps relevant to the Elvis version you have installed. 
+This section describes how to install the Auto Tag Images plug-in. Please follow the steps relevant to the Elvis version you have installed.
 
 ### 4.4.1 Elvis 6.7+
 
@@ -260,8 +261,14 @@ As explained in the architecture overview, the image recognition server sends pr
 
 # 10. Version history
 
+## v2.2.0
+
+This version has not yet been released.
+
+- Health check endpoint is now available at /ping. If the service is available, the response will be a JSON payload of ```{ "uptime": [uptime in seconds] }``` and a 200 status code.
+
 ## v2.1.0
-- Google Vision: Implement OCR, logo detection, web entities and web links. 
+- Google Vision: Implement OCR, logo detection, web entities and web links.
 - Added API security.
 
 ## v2.0.0
